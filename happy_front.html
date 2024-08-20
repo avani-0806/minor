@@ -1,0 +1,221 @@
+<?php
+    session_start();
+
+    if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true){
+        header("location: login.php");
+    }
+?>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        header {
+            z-index: 999;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 200px;
+            transition: 0.5s ease;
+            text-decoration: none;
+        }
+
+        header .brand {
+            color: #fff;
+            font-size: 2em;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        header .navigation {
+            position: relative;
+            text-decoration: none !important;
+        }
+
+        header .navigation .navigation-items a {
+            position: relative;
+            color: #fff;
+            font-size: 1.2em;
+            font-weight: 500;
+            text-decoration: none !important;
+            margin-left: 30px;
+            transition: 0.3s ease;
+        }
+
+        header .navigation .navigation-items a:before {
+            content: '';
+            position: absolute;
+            background: #fff;
+            width: 100%;
+            height: 0px;
+            bottom: 0;
+            left: 0;
+            transition: 0.3s ease;
+            text-decoration: none !important;
+        }
+
+
+        a:hover {
+        color: white;
+        text-decoration: none;
+        cursor: pointer;
+        }
+
+        header .navigation .navigation-items a:hover {
+            width: 100%;
+            padding: 0.3em 1.1em;
+            background: white;
+            color: black;
+        }
+
+        section {
+            padding: 100px 200px;
+        }
+
+        .home {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            background: #000000;
+        }
+
+        .home .content {
+            z-index: 888;
+            color: #fff;
+            width: 70%;
+            margin-top: 50px;
+            display: none;
+        }
+
+        .home .content.active {
+            display: block;
+        }
+
+        .home .content h1 {
+            font-size: 4em;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            line-height: 75px;
+            margin-bottom: 40px;
+        }
+
+        .home .content p {
+            margin-bottom: 65px;
+        }
+
+        .content.happy::before {
+            z-index: -4;
+            content: '';
+            position: absolute;
+            background: rgb(209, 51, 51, 0.3);
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+        .home .content.happy a {
+            background: #fff;
+            padding: 7px 20px;
+            color: #D13333;
+            font-size: 1.6em;
+            font-weight: 800;
+            text-decoration: none;
+            transition: 0.5s ease;
+        }
+
+        
+
+        .home .content a:hover{
+            padding: 12px 30px;
+            transition: 0.5s ease;
+            font-size: 2em;
+        }
+
+
+        .home video {
+            z-index: 000;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-slide {
+            position: absolute;
+            width: 100%;
+            clip-path: circle(0% at 0 50%);
+        }
+
+        .video-slide.active {
+            clip-path: circle(150% at 0 50%);
+            transition: 2s ease;
+            transition-property: clip-path;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="#" class="brand">Taylor Swift</a>
+        <div class="navigation">
+            <div class="navigation-items">
+                <a href="https://www.taylorswift.com/" target="_blank">About</a>
+                <a href="#">My Playlist</a>
+                <a href="logout.php">Logout</a>
+            </div>
+        </div>
+    </header>
+
+
+
+    <section class="home">
+        <video class="video-slide active" src="assets\Happy.mp4" autoplay loop muted></video>
+        
+
+        <div class="content active happy">
+            <h1>Ecstasy.</h1>
+            <p>Taylor Swift's music often delves into a spectrum of emotions, and while ecstasy is a theme she touches
+                upon, it's typically in the context of euphoria or intense happiness rather than the drug-related
+                meaning of ecstasy. Her songs often explore themes of love, passion, excitement, and joy, capturing the
+                highs and lows of relationships and life experiences. While her lyrics may evoke feelings of elation and
+                ecstasy, they're more aligned with the emotional intensity and excitement rather than the drug-induced
+                sensation associated with ecstasy. Throughout her career, Swift has focused on storytelling through her
+                music, offering narratives that resonate with diverse emotions, including moments of elation and
+                euphoria.</p>
+            <a href="http://localhost:8080/script_to_deploy/emotion_playlist/happy.html" target="_blank">Explore</a>
+        </div>
+        
+    </section>
+</body>
+
+</html>

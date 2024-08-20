@@ -1,0 +1,218 @@
+<?php
+    session_start();
+
+    if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true){
+        header("location: login.php");
+    }
+?>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        header {
+            z-index: 999;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 200px;
+            transition: 0.5s ease;
+            text-decoration: none;
+        }
+
+        header .brand {
+            color: #fff;
+            font-size: 2em;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        header .navigation {
+            position: relative;
+            text-decoration: none !important;
+        }
+
+        header .navigation .navigation-items a {
+            position: relative;
+            color: #fff;
+            font-size: 1.2em;
+            font-weight: 500;
+            text-decoration: none !important;
+            margin-left: 30px;
+            transition: 0.3s ease;
+        }
+
+        header .navigation .navigation-items a:before {
+            content: '';
+            position: absolute;
+            background: #fff;
+            width: 100%;
+            height: 0px;
+            bottom: 0;
+            left: 0;
+            transition: 0.3s ease;
+            text-decoration: none !important;
+        }
+
+
+        a:hover {
+        color: white;
+        text-decoration: none;
+        cursor: pointer;
+        }
+
+        header .navigation .navigation-items a:hover {
+            width: 100%;
+            padding: 0.3em 1.1em;
+            background: white;
+            color: black;
+        }
+
+        section {
+            padding: 100px 200px;
+        }
+
+        .home {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            background: #000000;
+        }
+
+        .home .content {
+            z-index: 888;
+            color: #fff;
+            width: 70%;
+            margin-top: 50px;
+            display: none;
+        }
+
+        .home .content.active {
+            display: block;
+        }
+
+        .home .content h1 {
+            font-size: 4em;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            line-height: 75px;
+            margin-bottom: 40px;
+        }
+
+        .home .content p {
+            margin-bottom: 65px;
+        }
+
+        .content.angry::before {
+            z-index: -4;
+            content: '';
+            position: absolute;
+            background: rgba(51, 209, 112, 0.3);
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .home .content.happy a {
+            background: #fff;
+            padding: 7px 20px;
+            color: #D13333;
+            font-size: 1.6em;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .home .content.angry a {
+            background: #fff;
+            padding: 7px 20px;
+            color: #036236;
+            font-size: 1.6em;
+            font-weight: 800;
+            text-decoration: none;
+            transition: 0.5s ease;
+        }
+
+        .home .content a:hover{
+            padding: 12px 30px;
+            transition: 0.5s ease;
+            font-size: 2em;
+        }
+
+
+        .home video {
+            z-index: 000;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="#" class="brand">Taylor Swift</a>
+        <div class="navigation">
+            <div class="navigation-items">
+                <a href="https://www.taylorswift.com/" target="_blank">About</a>
+                <a href="#">My Playlist</a>
+                <a href="logout.php">Logout</a>
+            </div>
+        </div>
+    </header>
+
+
+
+    <section class="home">
+        <video class="video-slide" id="angry" src="assets\Angry.mp4" autoplay loop muted></video>
+        <div class="content active angry">
+            <h1>Rage.</h1>
+            <p>Taylor Swift's music occasionally touches on themes of anger or frustration, reflecting human emotions
+                and experiences. However, her approach to expressing rage in her songs is more nuanced. Swift often
+                channels these emotions into her lyrics, using them as a vehicle for storytelling or empowerment rather
+                than solely dwelling on raw anger.
+
+                <br> Songs like "Bad Blood" and "Look What You Made Me Do" hint at feelings of betrayal or frustration,
+                but Swift typically infuses these emotions with a sense of resilience or empowerment. Her music tends to
+                explore the complexities of emotions, showcasing a range of feelings, including anger, but often with a
+                narrative that emphasizes growth, self-reflection, and strength in the face of challenges. Swift's
+                approach to rage in her music is often part of a larger narrative that incorporates various emotions and
+                personal growth within her storytelling.
+            </p>
+            <a href="http://localhost:8080/script_to_deploy/emotion_playlist/angry.html" target="_blank">Explore</a>
+        </div>
+    </section>
+</body>
+
+</html>

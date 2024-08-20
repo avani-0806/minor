@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoodSync Explore</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        } 
+
+        header {
+            z-index: 999;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 200px;
+            transition: 0.5s ease;
+            text-decoration: none;
+        }
+
+        header .brand {
+            color: #fff;
+            font-size: 2em;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        header .navigation {
+            position: relative;
+            text-decoration: none !important;
+        }
+
+        header .navigation .navigation-items a {
+            position: relative;
+            color: #fff;
+            font-size: 1.2em;
+            font-weight: 500;
+            text-decoration: none !important;
+            margin-left: 30px;
+            transition: 0.3s ease;
+        }
+
+        header .navigation .navigation-items a:before {
+            content: '';
+            position: absolute;
+            background: #fff;
+            width: 100%;
+            height: 0px;
+            bottom: 0;
+            left: 0;
+            transition: 0.3s ease;
+            text-decoration: none !important;
+        }
+
+
+        a:hover {
+        color: white;
+        text-decoration: none;
+        cursor: pointer;
+        }
+
+        header .navigation .navigation-items a:hover {
+            width: 100%;
+            padding: 0.3em 1.1em;
+            background: white;
+            color: black;
+        }
+
+        section {
+            padding: 100px 200px;
+        }
+
+        .home {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            background: #000000;
+        }
+
+        .home .content {
+            z-index: 888;
+            color: #fff;
+            width: 70%;
+            margin-top: 50px;
+            display: none;
+        }
+
+        .home .content.active {
+            display: block;
+        }
+
+        .home .content h1 {
+            font-size: 4em;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            line-height: 75px;
+            margin-bottom: 40px;
+        }
+
+        .home .content p {
+            margin-bottom: 65px;
+        }
+
+        .content.happy::before {
+            z-index: -4;
+            content: '';
+            position: absolute;
+            background: rgb(209, 51, 51, 0.3);
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .content.sad::before {
+            z-index: -4;
+            content: '';
+            position: absolute;
+            background: rgba(96, 178, 240, 0.3);
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .content.angry::before {
+            z-index: -4;
+            content: '';
+            position: absolute;
+            background: rgba(51, 209, 112, 0.3);
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .content.neutral::before {
+            z-index: -4;
+            content: '';
+            position: absolute;
+            background: rgba(238, 30, 114, 0.28);
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+        .home .content.happy a {
+            background: #fff;
+            padding: 7px 20px;
+            color: #D13333;
+            font-size: 1.6em;
+            font-weight: 800;
+            text-decoration: none;
+            transition: 0.5s ease;
+        }
+
+        .home .content.sad a {
+            background: #fff;
+            padding: 7px 20px;
+            color: #4d4a72;
+            font-size: 1.6em;
+            font-weight: 800;
+            text-decoration: none;
+            transition: 0.5s ease;
+        }
+
+        .home .content.neutral a {
+            background: #fff;
+            padding: 7px 20px;
+            color: #e74b65;
+            font-size: 1.6em;
+            font-weight: 800;
+            text-decoration: none;
+            transition: 0.5s ease;
+        }
+
+        .home .content.angry a {
+            background: #fff;
+            padding: 7px 20px;
+            color: #036236;
+            font-size: 1.6em;
+            font-weight: 800;
+            text-decoration: none;
+            transition: 0.5s ease;
+        }
+
+        .home .content a:hover{
+            padding: 12px 30px;
+            transition: 0.5s ease;
+            font-size: 2em;
+        }
+
+
+        .home video {
+            z-index: 000;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slider-navigation{
+            z-index: 888;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: translateY(80px);
+            margin-bottom: 12px;
+            gap: 2%;
+        }
+
+        .slider-navigation .nav-btn{
+            width: 12px;
+            height: 12px;
+            background: #fff;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
+            transition: 0.3 ease;    
+        }
+
+        .slider-navigation .nav-btn.active.happy {
+            background: #D13333;
+        }
+
+        .slider-navigation .nav-btn.active.angry {
+            background: #035641;
+        }
+
+        .slider-navigation .nav-btn.active.neutral {
+            background: #d57383;
+        }
+
+        .slider-navigation .nav-btn.active.sad {
+            background: #555172;
+        }
+
+        .slider-navigation .nav-btn:not(:last-child){
+            margin-right: 20px;
+        }
+
+        .slider-navigation .nav-btn:hover{
+            transform: scale(1.2);
+        }
+
+        .video-slide {
+            position: absolute;
+            width: 100%;
+            clip-path: circle(0% at 0 50%);
+        }
+
+        .video-slide.active {
+            clip-path: circle(150% at 0 50%);
+            transition: 2s ease;
+            transition-property: clip-path;
+        }
+    </style>
+    </head>
+<body>
+    <header>
+        <a href="#" class="brand">MoodSync</a>
+        <div class="navigation">
+            <div class="navigation-items">
+                <a href="http://localhost:8080/script_to_deploy/welcome_login.php">
+                    Home
+                </a>
+                <a href="http://localhost:8080/script_to_deploy/emotion_detect2.html" target="_blank">
+                    MoodSync Live
+                </a>
+                <a href="../welcome.html">
+                    Logout
+                </a>
+
+            </div>
+        </div>
+    </header>
+
+
+    
+    <section class="home">
+        <video class="video-slide active" src="assets\Happy.mp4" autoplay loop muted></video>
+        <video class="video-slide" id="angry" src="assets\Angry.mp4" autoplay loop muted></video>
+        <video class="video-slide" id="neutral" src="assets/Neutral.mp4" autoplay loop muted></video>
+        <video class="video-slide" src="assets/Sad.mp4" autoplay loop muted></video>
+
+
+        <div class="content active happy">
+            <h1>Ecstasy.</h1>
+            <p>Taylor Swift's music often delves into a spectrum of emotions, and while ecstasy is a theme she touches
+                upon, it's typically in the context of euphoria or intense happiness rather than the drug-related
+                meaning of ecstasy. Her songs often explore themes of love, passion, excitement, and joy, capturing the
+                highs and lows of relationships and life experiences. While her lyrics may evoke feelings of elation and
+                ecstasy, they're more aligned with the emotional intensity and excitement rather than the drug-induced
+                sensation associated with ecstasy. Throughout her career, Swift has focused on storytelling through her
+                music, offering narratives that resonate with diverse emotions, including moments of elation and
+                euphoria.</p>
+            <a href="http://localhost:8080/script_to_deploy/emotion_playlist/happy.html" target="_blank">Explore</a>
+        </div>
+        <div class="content angry">
+            <h1>Rage.</h1>
+            <p>Taylor Swift's music occasionally touches on themes of anger or frustration, reflecting human emotions
+                and experiences. However, her approach to expressing rage in her songs is more nuanced. Swift often
+                channels these emotions into her lyrics, using them as a vehicle for storytelling or empowerment rather
+                than solely dwelling on raw anger.
+
+                <br> Songs like "Bad Blood" and "Look What You Made Me Do" hint at feelings of betrayal or frustration,
+                but Swift typically infuses these emotions with a sense of resilience or empowerment. Her music tends to
+                explore the complexities of emotions, showcasing a range of feelings, including anger, but often with a
+                narrative that emphasizes growth, self-reflection, and strength in the face of challenges. Swift's
+                approach to rage in her music is often part of a larger narrative that incorporates various emotions and
+                personal growth within her storytelling.
+            </p>
+            <a href="http://localhost:8080/script_to_deploy/emotion_playlist/angry.html" target="_blank">Explore</a>
+        </div>
+        <div class="content neutral">
+            <h1>Tranquility.</h1>
+            <p>Taylor Swift has explored the theme of peace in her music, often intertwining it with themes of love,
+                relationships, and personal growth. In her songwriting, she reflects on the desire for tranquility,
+                harmony, and emotional stability amidst the chaos of life. Swift's lyrics often express a longing for
+                peace, both within oneself and in relationships, highlighting the importance of serenity, understanding,
+                and reconciliation.
+
+                <br> Through songs like "Peace" and "The Archer," Swift delves into introspection, acknowledging
+                personal vulnerabilities and the quest for inner calmness. Her music often encapsulates the struggle to
+                find peace in turbulent times, showcasing the complexities of maintaining emotional equilibrium while
+                navigating the highs and lows of life and love. Overall, Taylor Swift's exploration of peace in her
+                music embodies a quest for inner harmony and emotional serenity amid life's challenges and
+                relationships.
+            </p>
+            <a href="http://localhost:8080/script_to_deploy/emotion_playlist/neutral.html" target="_blank">Explore</a>
+        </div>
+        <div class="content sad">
+            <h1>Melancholia.</h1>
+            <p>While Taylor Swift is widely known for her upbeat and empowering songs, she has also delved into themes
+                of melancholia and introspection in her music. In certain tracks, Swift explores emotions such as
+                sadness, nostalgia, and wistfulness, offering listeners a glimpse into her reflective and introspective
+                side.
+
+                Songs like "The 1" and "Exile" showcase a more contemplative and pensive aspect of Swift's songwriting,
+                where she reflects on lost love, missed opportunities, and the passage of time. These tracks often carry
+                a sense of longing or a bittersweet tone, evoking emotions associated with melancholy and introspection.
+
+                <br>Swift's ability to capture the complexities of human emotions, including moments of melancholia,
+                adds depth and relatability to her music. Even within the realm of melancholic themes, she maintains a
+                skillful balance, weaving narratives that resonate with listeners while embracing vulnerability and
+                emotional depth.
+            </p>
+            <a href="http://localhost:8080/script_to_deploy/emotion_playlist/sad.html" target="_blank">Explore</a>
+        </div>
+        <div class="media-icons">
+            <a href="#"><i class="spotify"></i></a>
+            <a href="#"><i class="youtube"></i></a>
+            <a href="#"><i class="prime music"></i></a>
+        </div>
+
+        <div class="slider-navigation">
+            <div class="nav-btn active happy"></div>
+            <div class="nav-btn angry"></div>
+            <div class="nav-btn neutral"></div>
+            <div class="nav-btn sad" ></div>
+        </div>
+    </section>
+
+    <script type="text/javascript">
+
+        // JS for video slider navigation
+        const btns = document.querySelectorAll(".nav-btn");
+        const slides = document.querySelectorAll(".video-slide");
+        const contents = document.querySelectorAll(".content");
+
+        var sliderNav = function(manual){
+            btns.forEach((btn) => {
+                btn.classList.remove("active");
+            });
+            slides.forEach((slide) => {
+                slide.classList.remove("active");
+            });
+            contents.forEach((content) => {
+                content.classList.remove("active");
+            });
+
+            btns[manual].classList.add("active");
+            slides[manual].classList.add("active");
+            contents[manual].classList.add("active");
+        }
+
+        btns.forEach((btn, i) => {
+            btn.addEventListener("click", () => {
+                sliderNav(i);
+            })
+        });
+    </script>
+</body>
+</html>
