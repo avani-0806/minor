@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html {
+    height: 100%;
+    }
+
+    body {
+    background-image: radial-gradient(circle farthest-corner at center, #3C4B57 0%, #1C262B 100%);
+    }
+
+    .loader {
+    position: absolute;
+    top: calc(50% - 32px);
+    left: calc(50% - 32px);
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    perspective: 800px;
+    }
+
+    .inner {
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;  
+    }
+
+    .inner.one {
+    left: 0%;
+    top: 0%;
+    animation: rotate-one 1s linear infinite;
+    border-bottom: 3px solid #EFEFFA;
+    }
+
+    .inner.two {
+    right: 0%;
+    top: 0%;
+    animation: rotate-two 1s linear infinite;
+    border-right: 3px solid #EFEFFA;
+    }
+
+    .inner.three {
+    right: 0%;
+    bottom: 0%;
+    animation: rotate-three 1s linear infinite;
+    border-top: 3px solid #EFEFFA;
+    }
+
+    @keyframes rotate-one {
+    0% {
+        transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+    }
+    100% {
+        transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+    }
+    }
+
+    @keyframes rotate-two {
+    0% {
+        transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+    }
+    100% {
+        transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+    }
+    }
+
+    @keyframes rotate-three {
+    0% {
+        transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+    }
+    100% {
+        transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+    }
+    }
+
+    body {
+    background:#000;
+    }
+
+    #load {
+    position:absolute;
+    width:600px;
+    height:36px;
+    left:50%;
+    top:40%;
+    margin-left:-300px;
+    overflow:visible;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+    cursor:default;
+    }
+
+    #load div {
+    position:absolute;
+    width:30px;
+    height:36px;
+    opacity:0;
+    font-family:Helvetica, Arial, sans-serif;
+    animation:move 2s linear infinite;
+    -o-animation:move 2s linear infinite;
+    -moz-animation:move 2s linear infinite;
+    -webkit-animation:move 2s linear infinite;
+    transform:rotate(180deg);
+    -o-transform:rotate(180deg);
+    -moz-transform:rotate(180deg);
+    -webkit-transform:rotate(180deg);
+    color:#35C4F0;
+    }
+    
+    #load div:nth-child(2) {
+    animation-delay:0.2s;
+    -o-animation-delay:0.2s;
+    -moz-animation-delay:0.2s;
+    -webkit-animation-delay:0.2s;
+    }
+    #load div:nth-child(3) {
+    animation-delay:0.4s;
+    -o-animation-delay:0.4s;
+    -webkit-animation-delay:0.4s;
+    -webkit-animation-delay:0.4s;
+    }
+    #load div:nth-child(4) {
+    animation-delay:0.6s;
+    -o-animation-delay:0.6s;
+    -moz-animation-delay:0.6s;
+    -webkit-animation-delay:0.6s;
+    }
+    #load div:nth-child(5) {
+    animation-delay:0.8s;
+    -o-animation-delay:0.8s;
+    -moz-animation-delay:0.8s;
+    -webkit-animation-delay:0.8s;
+    }
+    #load div:nth-child(6) {
+    animation-delay:1s;
+    -o-animation-delay:1s;
+    -moz-animation-delay:1s;
+    -webkit-animation-delay:1s;
+    }
+    #load div:nth-child(7) {
+    animation-delay:1.2s;
+    -o-animation-delay:1.2s;
+    -moz-animation-delay:1.2s;
+    -webkit-animation-delay:1.2s;
+    }
+
+    @keyframes move {
+    0% {
+        left:0;
+        opacity:0;
+    }
+    35% {
+        left: 41%; 
+        -moz-transform:rotate(0deg);
+        -webkit-transform:rotate(0deg);
+        -o-transform:rotate(0deg);
+        transform:rotate(0deg);
+        opacity:1;
+    }
+    65% {
+        left:59%; 
+        -moz-transform:rotate(0deg); 
+        -webkit-transform:rotate(0deg); 
+        -o-transform:rotate(0deg);
+        transform:rotate(0deg); 
+        opacity:1;
+    }
+    100% {
+        left:100%; 
+        -moz-transform:rotate(-180deg); 
+        -webkit-transform:rotate(-180deg); 
+        -o-transform:rotate(-180deg); 
+        transform:rotate(-180deg);
+        opacity:0;
+    }
+    }
+
+    @-moz-keyframes move {
+    0% {
+        left:0; 
+        opacity:0;
+    }
+    35% {
+        left:41%; 
+        -moz-transform:rotate(0deg); 
+        transform:rotate(0deg);
+        opacity:1;
+    }
+    65% {
+        left:59%; 
+        -moz-transform:rotate(0deg); 
+        transform:rotate(0deg);
+        opacity:1;
+    }
+    100% {
+        left:100%; 
+        -moz-transform:rotate(-180deg); 
+        transform:rotate(-180deg);
+        opacity:0;
+    }
+    }
+
+    @-webkit-keyframes move {
+    0% {
+        left:0; 
+        opacity:0;
+    }
+    35% {
+        left:41%; 
+        -webkit-transform:rotate(0deg); 
+        transform:rotate(0deg); 
+        opacity:1;
+    }
+    65% {
+        left:59%; 
+        -webkit-transform:rotate(0deg); 
+        transform:rotate(0deg); 
+        opacity:1;
+    }
+    100% {
+        left:100%;
+        -webkit-transform:rotate(-180deg); 
+        transform:rotate(-180deg); 
+        opacity:0;
+    }
+    }
+
+    @-o-keyframes move {
+    0% {
+        left:0; 
+        opacity:0;
+    }
+    35% {
+        left:41%; 
+        -o-transform:rotate(0deg); 
+        transform:rotate(0deg); 
+        opacity:1;
+    }
+    65% {
+        left:59%; 
+        -o-transform:rotate(0deg); 
+        transform:rotate(0deg); 
+        opacity:1;
+    }
+    100% {
+        left:100%; 
+        -o-transform:rotate(-180deg); 
+        transform:rotate(-180deg); 
+        opacity:0;
+    }
+    }
+  </style>
+</head>
+<body>
+  <div id="load">
+    <div>G</div>
+    <div>N</div>
+    <div>I</div>
+    <div>D</div>
+    <div>A</div>
+    <div>O</div>
+    <div>L</div>
+  </div>
+  <div class="loader">
+      <div class="inner one"></div>
+      <div class="inner two"></div>
+      <div class="inner three"></div>
+  </div>
+
+
+
+
+<!-- ******************************************************* -->
+
+
+
+  <script src="https://sdk.morphcast.com/mphtools/v1.1/mphtools.js" data-config="cameraPrivacyPopup, compatibilityUI, compatibilityAutoCheck"></script>
+  <script src="https://ai-sdk.morphcast.com/v1.16/ai-sdk.js"></script>
+  <script>
+  x=0;
+  CY.loader()
+    .licenseKey("cee5e56e1f4a50dae30077f53630255e77496648964e")
+    .addModule(CY.modules().FACE_EMOTION.name, {smoothness: 0.40})
+    .addModule(CY.modules().FACE_GENDER.name, {smoothness: 0.95, threshold: 0.70})
+    .addModule(CY.modules().FACE_DETECTOR.name, {maxInputFrameSize: 320, smoothness: 0.83})
+    .load()
+    .then(({ start, stop }) => start());
+  
+  
+    window.addEventListener(CY.modules().FACE_EMOTION.eventName, (evt) => {
+    console.log('Emotion result', evt.detail);
+    });
+  
+  MphTools.CameraPrivacyPopup.setText({
+      "title": "Allow us to use your camera",
+      "description": "This experience is designed to be viewed with your camera on. The next screen will ask your consent to access data from your camera.",
+      "url": "https://YOUR_DOMAIN/<YOUR_PRIVACY_POLICY>"
+  });
+  
+  </script>
+  
+  <!-- your body part -->
+</body>
+</html>

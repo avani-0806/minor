@@ -1,0 +1,332 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #5f7a61;
+    font-family: "Poppins", sans-serif;
+}
+
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+}
+
+.music-player{
+    z-index: 100;
+    width: 1000px;
+    height: 650px;
+    border-radius: 20px;
+    background: rgba(31, 20, 20, 0.763);
+    box-shadow: 0 40px 100px rgba(255,255,255,0.1);
+    padding: 30px;
+    overflow: hidden;
+    color: #d5eebb;
+}
+
+.music-name, .album-name{
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.music-name{
+    font-size: 55px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.Red{
+    color: transparent;
+    background: linear-gradient(90deg, #df807a 10%, #d13d3b 60%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    
+}
+
+.Speak-Now{
+    color: transparent;
+    background: linear-gradient(90deg, rgb(200, 113, 181) 40%, #c26675 60%);
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.Folklore{
+    color: transparent;
+    background: linear-gradient(90deg, #5f5d60 10%, #dddde5 60%);
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.Reputation{
+    color: transparent;
+    background: linear-gradient(90deg, #5f5d60 10%, #dddde5 60%);
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.Evermore{
+    color: transparent;
+    background: linear-gradient(90deg, #a96f44 10%, #f2ecb6 60%);
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+.Fearless{
+    color: transparent;
+    background: linear-gradient(90deg, #a96f44 10%, #f2ecb6 60%);
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.Midnights{
+    color: transparent;
+    background: linear-gradient(90deg, #648fa8 30%, #87b89f 60%);
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.Nineteen-Eighty-Nine{
+    color: transparent;
+    background: linear-gradient(90deg, #648fa8 30%, #87b89f 60%);
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.Lover{
+    color: transparent;
+    background: linear-gradient(90deg, #938bac 10%, #bb7a84 60%);
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.album-name{
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.disk{
+    position: relative;
+    display: block;
+    margin: 40px auto;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: url('images/red.jpeg');
+    background-size: cover;
+    box-shadow: 0 0 0 10px rgba(255,255,255,0.08);
+    animation: rotate 20s linear infinite;
+    animation-play-state: paused;
+}
+
+.disk.play{
+    animation-play-state: running;
+}
+
+.disk::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: black;
+}
+
+.song-slider{
+    width: 100%;
+    position: relative;
+}
+
+.seek-bar{
+    /* -webkit-appearance: none; */
+    width: 100%;
+    height: 5px;
+    border-radius: 10px;
+    background: #7f97c8;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.seek-bar::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 1px;
+    height: 20px;
+    background: #000;
+    box-shadow: -400px 0 0 400px #d5eebb;
+}
+
+.seek-bar.Red::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 1px;
+    height: 20px;
+    background: #000;
+    box-shadow: -400px 0 0 400px #d13d3b;
+}
+.seek-bar.Lover::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 1px;
+    height: 20px;
+    background: #000;
+    box-shadow: -400px 0 0 400px #bb7a84;
+}
+.seek-bar.Speak-Now::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 1px;
+    height: 20px;
+    background: #000;
+    box-shadow: -400px 0 0 400px rgb(216, 79, 186);
+}
+.seek-bar.Evermore::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 1px;
+    height: 20px;
+    background: #000;
+    box-shadow: -400px 0 0 400px #a96f44;
+}
+.seek-bar.Midnights::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 1px;
+    height: 20px;
+    background: #000;
+    box-shadow: -400px 0 0 400px #304e5f;
+}
+
+.current-time, .song-duration{
+    font-size: 12px;
+}
+
+.song-duration{
+    position: absolute;
+    right: 0;
+}
+
+.controls{
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.heart{
+    position: absolute;
+    width: 33px;
+    height: 33px;
+    top: 61%;
+    left: 21%;
+    cursor: pointer;
+    background: none;
+    border: none;
+    fill: #d5eebb;
+}
+.heart.display{
+    position: absolute;
+    width: 33px;
+    height: 33px;
+    top: 61%;
+    left: 21%;
+    fill: red;
+}
+
+.play-btn{
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: none;
+    cursor: pointer;
+    border: none;
+}
+
+.play-btn span{
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 40px;
+    border-radius: 2px;
+    background: white;
+    transition: .5s;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.play-btn span:nth-child(2){
+    left: 55%;
+    transform-origin: center;
+}
+
+.play-btn.pause span:nth-child(2){
+    transform: translateY(-50%) scaleY(0);
+}
+
+.play-btn.pause span:nth-child(1){
+    width: 35%;
+    left: 53%;
+    transform: translate(-50%, -50%);
+    border-radius: 0;
+    clip-path: polygon(0 0, 100% 50%, 100% 50%, 0% 100%);
+}
+
+.play-btn.pause{
+    animation: pulse 2s linear infinite;
+}
+
+@keyframes pulse{
+    0%{
+        box-shadow: 0;
+    }
+    50%{
+        box-shadow: 0 0 0 5px rgba(255,255,255,0.1);
+    }
+    100%{
+        box-shadow: 0 0 0 5px rgba(255,255,255,0.4);
+    }
+}
+
+.btn{
+    width: 60px;
+    height: 60px;
+    background: none;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+}
+
+.btn img{
+    filter: grayscale(100%);
+    filter: contrast(100%);
+    width: 50%;
+    height: 80%;
+    margin-right: 7%;
+}
+
+.forward-btn img{
+    margin-left: 11%;
+}
+
+@keyframes rotate{
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
